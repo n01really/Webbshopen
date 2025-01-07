@@ -14,10 +14,10 @@ namespace Webbshopen
             switch (mainMenu)
             {
                 case 0:
-                    mainMenu = 0;
+                    framSida.forstaSida();
                     break;
                 case 1:
-                    mainMenu = 1;
+                    Categorier.Kategotier();
                     break;
                 case 2:
                     mainMenu = 2;
@@ -27,7 +27,7 @@ namespace Webbshopen
                     break;//placeholders
             }
 
-            Console.WriteLine("menu");
+            Console.WriteLine("meny");
             Console.WriteLine();
             Console.WriteLine("0. hem  1. Kategorier 2. logga in 3. om oss");
         }

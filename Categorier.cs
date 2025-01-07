@@ -8,5 +8,9 @@ namespace Webbshopen
 {
     internal class Categorier
     {
+        public static void Kategotier()
+        {
+
+        }
     }
 }

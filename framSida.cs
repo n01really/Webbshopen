@@ -8,5 +8,8 @@ namespace Webbshopen
 {
     internal class framSida
     {
+        public static void forstaSida() 
+        {
+        }
     }
 }
