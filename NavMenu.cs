@@ -8,28 +8,42 @@ namespace Webbshopen
 {
     internal class NavMenu
     {
+        
        public static void MainMenu()
         {
-            int mainMenu = 0;//placeholder
-            switch (mainMenu)
-            {
-                case 0:
-                    framSida.forstaSida();
-                    break;
-                case 1:
-                    Categorier.Kategotier();
-                    break;
-                case 2:
-                    mainMenu = 2;
-                    break;
-                case 3:
-                    mainMenu = 3;
-                    break;//placeholders
-            }
-
             Console.WriteLine("meny");
             Console.WriteLine();
-            Console.WriteLine("0. hem  1. Kategorier 2. logga in 3. om oss");
+            Console.WriteLine("a. hem  b. Kategorier c. logga in d. om oss");
+
+            string mainMenu = Console.ReadLine();
+            switch (mainMenu)
+            {
+                case "a":
+                    framSida.forstaSida();
+
+                    break;
+                case "b":
+                    Categorier.Kategotier();
+
+                    break;
+                case "c":
+                    LoggIn.loggaIn();
+
+                    break;
+                case "d":
+                    aboutUs.omOss();
+
+                    break;
+                case "f":
+                    Admin.admin();
+
+                    break;
+                default:
+                    Console.WriteLine("Ogiltigt val"); 
+                    break;
+            }
+
+
         }
     }
 }

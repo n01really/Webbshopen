@@ -11,6 +11,14 @@ namespace Webbshopen
         public static void Kategotier()
         {
 
+            using (var db = new SQL.MyDbContext()) 
+            {
+                foreach (var Kategorier in db.Kategorier)
+                {
+                    Console.WriteLine(Kategorier.Id + "\t" + Kategorier.Name);
+                    Console.WriteLine("------------------------");
+                }
+            }
         }
     }
 }

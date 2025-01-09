@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Webbshopen
 {
-    internal class LoggIn
+    internal class aboutUs
     {
-        public static void loggaIn()
-        {
-            
+        public static void omOss() 
+        { 
         }
     }
 }
