@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace Webbshopen
 {
-    internal class framSida
+    internal class Profil
     {
-        
-        public static void forstaSida() 
+        public static void profil ()
         {
-            Console.WriteLine("Välkomen till Richards saker");
-            NavMenu.MainMenu();  
-
 
         }
     }

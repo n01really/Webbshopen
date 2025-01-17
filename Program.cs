@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            NavMenu.MainMenu();
+            framSida.forstaSida();
+            
         }
     }
 }

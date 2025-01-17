@@ -11,6 +11,7 @@ namespace Webbshopen.SQL
     {
         public DbSet<Kategorier> Kategorier { get; set; }
         public DbSet<Products> Products { get; set; }
+        public DbSet<Profiler> Profiler { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 

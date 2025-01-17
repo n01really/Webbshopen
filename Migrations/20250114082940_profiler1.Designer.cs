@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Webbshopen.SQL;
 
@@ -10,9 +11,11 @@ using Webbshopen.SQL;
 namespace Webbshopen.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250114082940_profiler1")]
+    partial class profiler1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,9 +51,6 @@ namespace Webbshopen.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Antal")
-                        .HasColumnType("int");
-
                     b.Property<int>("KategoriId")
                         .HasColumnType("int");
 
@@ -62,9 +62,6 @@ namespace Webbshopen.Migrations
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
-
-                    b.Property<string>("levrantör")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("pris")
                         .HasColumnType("int");
@@ -91,18 +88,23 @@ namespace Webbshopen.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("adress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("efterNamn")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("forNamn")
+                    b.Property<string>("förNamn")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("losenord")
+                    b.Property<string>("lösenord")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -124,7 +126,7 @@ namespace Webbshopen.Migrations
             modelBuilder.Entity("Webbshopen.SQL.Profiler", b =>
                 {
                     b.HasOne("Webbshopen.SQL.Profiler", null)
-                        .WithMany("Konton")
+                        .WithMany("Profilers")
                         .HasForeignKey("ProfilerId");
                 });
 
@@ -135,7 +137,7 @@ namespace Webbshopen.Migrations
 
             modelBuilder.Entity("Webbshopen.SQL.Profiler", b =>
                 {
-                    b.Navigation("Konton");
+                    b.Navigation("Profilers");
                 });
 #pragma warning restore 612, 618
         }

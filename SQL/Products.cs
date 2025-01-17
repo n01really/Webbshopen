@@ -17,6 +17,10 @@ namespace Webbshopen.SQL
 
         public int pris {  get; set; }
 
+        public int Antal { get; set; }
+
+        public string? levrantör { get; set; }
+
         public virtual Kategorier? Kategorier { get; set; }
     }
 }
