@@ -9,7 +9,6 @@ namespace Webbshopen.SQL
     internal class Products
     {
         public int Id { get; set; }
-        public int KategoriId { get; set; }
 
         public int ProductId { get; set; }
 
@@ -18,6 +17,7 @@ namespace Webbshopen.SQL
         public int pris {  get; set; }
 
         public int Antal { get; set; }
+        public string? Description { get; set; }
 
         public string? levrantör { get; set; }
 

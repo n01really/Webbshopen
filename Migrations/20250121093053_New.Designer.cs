@@ -11,8 +11,8 @@ using Webbshopen.SQL;
 namespace Webbshopen.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20250114094431_plsWork")]
-    partial class plsWork
+    [Migration("20250121093053_New")]
+    partial class New
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,6 +51,9 @@ namespace Webbshopen.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Antal")
+                        .HasColumnType("int");
+
                     b.Property<int>("KategoriId")
                         .HasColumnType("int");
 
@@ -62,6 +65,9 @@ namespace Webbshopen.Migrations
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("levrantör")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("pris")
                         .HasColumnType("int");
@@ -88,23 +94,18 @@ namespace Webbshopen.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("adress")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("efterNamn")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("forNamn")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("losenord")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

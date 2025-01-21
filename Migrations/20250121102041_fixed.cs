@@ -5,20 +5,17 @@
 namespace Webbshopen.Migrations
 {
     /// <inheritdoc />
-    public partial class producter : Migration
+    public partial class @fixed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "Antal",
-                table: "Products",
-                type: "int",
-                nullable: false,
-                defaultValue: 0);
+            migrationBuilder.DropColumn(
+                name: "KategoriId",
+                table: "Products");
 
             migrationBuilder.AddColumn<string>(
-                name: "levrantör",
+                name: "Description",
                 table: "Products",
                 type: "nvarchar(max)",
                 nullable: true);
@@ -28,12 +25,15 @@ namespace Webbshopen.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Antal",
+                name: "Description",
                 table: "Products");
 
-            migrationBuilder.DropColumn(
-                name: "levrantör",
-                table: "Products");
+            migrationBuilder.AddColumn<int>(
+                name: "KategoriId",
+                table: "Products",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
         }
     }
 }

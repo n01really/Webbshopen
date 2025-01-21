@@ -14,7 +14,7 @@ namespace Webbshopen
             {
                 foreach (var Products in db.Products)
                 {
-                    Console.WriteLine(Products.Id + "\t" + Products.Name + "\t" + Products.KategoriId + "\t" + Products.Antal + "\t" + 
+                    Console.WriteLine(Products.Id + "\t" + Products.Name +  "\t" + Products.Antal + "\t" + 
                         Products.pris + "\t" + Products.levrantör);
                 }
             }

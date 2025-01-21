@@ -11,8 +11,8 @@ using Webbshopen.SQL;
 namespace Webbshopen.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20250114095206_plsWork2")]
-    partial class plsWork2
+    [Migration("20250121102041_fixed")]
+    partial class @fixed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,8 +51,11 @@ namespace Webbshopen.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("KategoriId")
+                    b.Property<int>("Antal")
                         .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("KategorierId")
                         .HasColumnType("int");
@@ -62,6 +65,9 @@ namespace Webbshopen.Migrations
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
+
+                    b.Property<string>("levrantör")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("pris")
                         .HasColumnType("int");

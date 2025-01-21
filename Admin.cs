@@ -12,7 +12,7 @@ namespace Webbshopen
     {
         public static void admin() 
         {
-            Console.WriteLine("admin meny: q. lägg till kat w. ta bort kat");
+            Console.WriteLine("admin meny: q. lägg till kat w. ta bort kat e. Lägg till product r. Ta bort product t. Ta bort konto y. skapa admin konto");
             while (true)
             {
                 using (var db = new SQL.MyDbContext())
@@ -46,9 +46,7 @@ namespace Webbshopen
                             Console.WriteLine("lägg till Produkt");
                             string prodNamn = Console.ReadLine();
                             Console.WriteLine("Skriv Kategori Id");
-                            int katId;
-                            int.TryParse(Console.ReadLine(), out katId);
-                            Console.WriteLine("Skriv pris: ");
+
                             int Pris;
                             int.TryParse(Console.ReadLine(),out Pris);
                             Console.WriteLine("Skriv Antal: ");
@@ -59,7 +57,7 @@ namespace Webbshopen
                             Console.WriteLine("skriv invetnarie Id");
                             int invId;
                             int.TryParse(Console.ReadLine() ,out invId);
-                            db.Products.Add(new SQL.Products { Name = prodNamn, KategoriId = katId, pris = Pris, Antal = antal, levrantör = levrantör, ProductId = invId});
+                            db.Products.Add(new SQL.Products { Name = prodNamn, pris = Pris, Antal = antal, levrantör = levrantör, ProductId = invId});
                             db.SaveChanges();
                             break;
                         case "r":
@@ -82,12 +80,21 @@ namespace Webbshopen
                         case "y":
                             Console.Clear();
                             Konton.konton();
-                            Console.WriteLine("vilket konto vill du göra till Admin");
-                            int toggle;
-                            int.TryParse(Console.ReadLine(), out toggle);
-                            db.Profiler.Update(new SQL.Profiler { Id = toggle, Admin = true});
-                            Console.Clear();
-                            Konton.konton();
+                            Console.WriteLine("Skriv in ditt Förnamn: ");
+                            string fN = Console.ReadLine();
+                            Console.WriteLine("Förnamn: " + fN);
+                            Console.WriteLine("skriv in ditt Efternamn: ");
+                            string eN = Console.ReadLine();
+                            Console.WriteLine("Efternamn: " + eN);
+                            Console.WriteLine("skriv in din Adress: ");
+                            string aD = Console.ReadLine();
+                            Console.WriteLine("Adress: " + aD);
+                            Console.WriteLine("skriv in din Email");
+                            string eM = Console.ReadLine();
+                            Console.WriteLine("Email: " + eM);
+                            Console.WriteLine("Skriv in ett Lössenord: ");
+                            string lO = Console.ReadLine();
+                            db.Profiler.Add(new SQL.Profiler { Admin = true, forNamn = fN, efterNamn = eN, adress = aD, email = eM, losenord = lO });
                             break;
                         default:
                             Console.WriteLine("Ogiltigt val");

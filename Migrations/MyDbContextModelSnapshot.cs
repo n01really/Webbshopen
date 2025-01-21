@@ -51,8 +51,8 @@ namespace Webbshopen.Migrations
                     b.Property<int>("Antal")
                         .HasColumnType("int");
 
-                    b.Property<int>("KategoriId")
-                        .HasColumnType("int");
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("KategorierId")
                         .HasColumnType("int");
