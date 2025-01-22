@@ -15,7 +15,7 @@ namespace Webbshopen
             {
                 foreach (var Kategorier in db.Kategorier)
                 {
-                    Console.WriteLine(Kategorier.Id + "\t" + Kategorier.Name);
+                    Console.WriteLine(Kategorier.Id + "\t" + Kategorier.Name );
                     Console.WriteLine("------------------------");
                 }
             }

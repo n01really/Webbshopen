@@ -12,7 +12,6 @@ namespace Webbshopen.SQL
 
         public string? Name { get; set; }
 
-        public int KategoriId { get; set; }
 
         public virtual ICollection<Products> Products { get; set; } = new List<Products>();
     }

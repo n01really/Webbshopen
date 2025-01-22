@@ -33,7 +33,7 @@ namespace Webbshopen
                             Categorier.Kategotier();
                             Console.WriteLine("ta bort kategori");
                             int kategoriId;
-                            if (int.TryParse(Console.ReadLine(), out kategoriId))
+                            int.TryParse(Console.ReadLine(), out kategoriId);
                             db.Kategorier.Remove(new SQL.Kategorier {Id = kategoriId });
                             db.SaveChanges();
                             Console.Clear();
@@ -42,31 +42,33 @@ namespace Webbshopen
                             break;
                         case "e":
                             Console.Clear();
+                            Categorier.Kategotier();
                             Inventarie.inventarie();
+                            Console.WriteLine("ange kategori Id");
+                            int kategorierId = int.Parse(Console.ReadLine()); 
                             Console.WriteLine("lägg till Produkt");
-                            string prodNamn = Console.ReadLine();
-                            Console.WriteLine("Skriv Kategori Id");
-
-                            int Pris;
-                            int.TryParse(Console.ReadLine(),out Pris);
+                            string Name = Console.ReadLine();
+                            Console.WriteLine("pris");
+                            int Pris = int.Parse(Console.ReadLine());
                             Console.WriteLine("Skriv Antal: ");
-                            int antal;
-                            int.TryParse(Console.ReadLine(),out antal);
+                            int antal = int.Parse(Console.ReadLine());
                             Console.WriteLine("Skriv levrantör: ");
-                            string levrantör = Console.ReadLine();
+                            string? levrantör = Console.ReadLine();
                             Console.WriteLine("skriv invetnarie Id");
-                            int invId;
-                            int.TryParse(Console.ReadLine() ,out invId);
-                            db.Products.Add(new SQL.Products { Name = prodNamn, pris = Pris, Antal = antal, levrantör = levrantör, ProductId = invId});
+                            int? productId = int.Parse(Console.ReadLine());
+                            Console.WriteLine("beskrivning");
+                            string? Description = Console.ReadLine();
+                            var newProd = new SQL.Products( Name, kategorierId, Pris, antal, Description, levrantör, productId);
+                            db.Add(newProd);
                             db.SaveChanges();
                             break;
                         case "r":
                             Console.Clear();
                             Inventarie.inventarie();
-                            Console.WriteLine("ta bort produkt");
-                            int prodId;
-                            int.TryParse(Console.ReadLine(), out prodId);
-                            db.Products.Remove(new SQL.Products { Id = prodId });
+                            Console.WriteLine("ta bort produkt: ");
+                            int id = int.Parse( Console.ReadLine());
+                            var remProd = new SQL.Products(id);
+                            db.Remove(remProd);
                             db.SaveChanges();
                             break;
                         case "t":
@@ -95,6 +97,9 @@ namespace Webbshopen
                             Console.WriteLine("Skriv in ett Lössenord: ");
                             string lO = Console.ReadLine();
                             db.Profiler.Add(new SQL.Profiler { Admin = true, forNamn = fN, efterNamn = eN, adress = aD, email = eM, losenord = lO });
+                            db.SaveChanges();
+                            Console.Clear();
+                            framSida.adminSida();
                             break;
                         default:
                             Console.WriteLine("Ogiltigt val");

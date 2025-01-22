@@ -13,8 +13,11 @@ namespace Webbshopen
         {
             Console.WriteLine("Välkomen till Richards saker");
             NavMenu.MainMenu();  
-
-
+        }
+        public static void adminSida()
+        {
+            Console.WriteLine("Välkomen till Richards saker");
+            Admin.admin();
         }
     }
 }

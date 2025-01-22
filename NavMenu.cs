@@ -51,19 +51,19 @@ namespace Webbshopen
 
         public static void LoggaInMeny()
         {
-            Console.WriteLine("l. Logga in,   r. Regristrera dig,   f.Hem");
+            Console.WriteLine("a. Logga in,   b. Regristrera dig,   c.Hem");
             string loggInMeny = Console.ReadLine();
             switch (loggInMeny)
             {
-                case "l":
+                case "a":
                     Console.Clear();
                     LoggIn.loggaIn();
                     break;
-                case "r":
+                case "b":
                     Console.Clear();
                     LoggIn.regristrera();
                     break;
-                case "f":
+                case "c":
                     Console.Clear();
                     framSida.forstaSida();
                     break;

@@ -29,7 +29,7 @@ namespace Webbshopen
                         Console.Clear();
                         NavMenu.LoggaInMeny();
                     }
-                    else
+                    if(emailAddress == Profiler.email) 
                     {
                         Console.WriteLine("Lössenord: ");
                         string lossenOrd = Console.ReadLine();
@@ -41,8 +41,11 @@ namespace Webbshopen
                         }
                         else 
                         { 
-                            bool inloggad = true;
                             Profil.profil();
+                        }
+                        if (Profiler.Admin == true)
+                        {
+                            framSida.adminSida();
                         }
                     }
                 }
@@ -52,7 +55,7 @@ namespace Webbshopen
         }
         public static void regristrera() 
         {
-            NavMenu.MainMenu();
+            
             using (var db = new SQL.MyDbContext())
             {
                 Console.WriteLine("Skriv in ditt Förnamn: ");
