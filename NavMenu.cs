@@ -13,7 +13,7 @@ namespace Webbshopen
        {
             Console.WriteLine("meny");
             Console.WriteLine();
-            Console.WriteLine("a. hem  b. Kategorier c. logga in d. om oss");
+            Console.WriteLine("a. hem  b. Kategorier c. logga in d. om oss f.Sök");
 
             string mainMenu = Console.ReadLine();
             switch (mainMenu)
@@ -37,13 +37,13 @@ namespace Webbshopen
 
                     break;
                 case "f":
-                    Admin.admin();
-
+                    Console.Clear();
+                    Search.search();
                     break;
                 default:
-                    Console.WriteLine("Ogiltigt val"); 
-
-                    return;
+                    Console.WriteLine("Ogiltigt val");
+                    framSida.forstaSida();
+                    break;
             }
 
 
