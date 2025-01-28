@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Webbshopen.SQL
 {
-    internal class Products
+    public class Products
     {
         public Products(int id)
         {

@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace Webbshopen.SQL
 {
-    internal class MyDbContext : DbContext
+    public class MyDbContext : DbContext
     {
         public DbSet<Kategorier> Kategorier { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<Profiler> Profiler { get; set; }
+        public DbSet<Kundvagn> kundvagns { get; set; }
+        public DbSet<CartSummary> CartSummary { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 

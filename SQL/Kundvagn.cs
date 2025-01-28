@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 
 namespace Webbshopen.SQL
 {
-    internal class Kundvagn
+    public class Kundvagn
     {
         public int Id { get; set; }
-        public string? Name { get; set; }
-
-        public int KategorierId { get; set; }
-
-        public int? Pris { get; set; }
-
-        public int? Antal { get; set; }
-        
-
-        public string? Levrantör { get; set; }
+        public int ProductId { get; set; }
+        public string? ProductName { get; set; }
+        public int Quantity { get; set; }
+        public int Price { get; set; }
     }
 }

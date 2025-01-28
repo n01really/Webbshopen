@@ -7,7 +7,7 @@ using Webbshopen.Migrations;
 
 namespace Webbshopen.SQL
 {
-    internal class Profiler
+    public class Profiler
     {
         public int Id { get; set; }
         public string? forNamn { get; set; }

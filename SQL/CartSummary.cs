@@ -6,13 +6,10 @@ using System.Threading.Tasks;
 
 namespace Webbshopen.SQL
 {
-    public class Kategorier
+    public class CartSummary
     {
         public int Id { get; set; }
-
-        public string? Name { get; set; }
-
-
-        public virtual ICollection<Products> Products { get; set; } = new List<Products>();
+        public int TotalQuantity { get; set; }
+        public int TotalPrice { get; set; }
     }
 }

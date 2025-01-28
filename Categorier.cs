@@ -18,6 +18,7 @@ namespace Webbshopen
                     Console.WriteLine(Kategorier.Id + "\t" + Kategorier.Name );
                     Console.WriteLine("------------------------");
                 }
+                NavMenu.catmeny();
             }
         }
     }
