@@ -15,7 +15,7 @@ namespace Webbshopen
        {
             Console.WriteLine("meny");
             Console.WriteLine();
-            Console.WriteLine("a. hem  b. Kategorier c. logga in d. om oss f.Sök");
+            Console.WriteLine("a. hem  b. Kategorier c. logga in d. Kundvagn f.Sök");
 
             string mainMenu = Console.ReadLine();
             switch (mainMenu)
@@ -34,10 +34,6 @@ namespace Webbshopen
                     LoggIn.Meny();
                     break;
                 case "d":
-                    Console.Clear();
-                    aboutUs.omOss();
-                    break;
-                case "e":
                     Console.Clear();
                     ShowCart();
                     break;

@@ -10,49 +10,56 @@ namespace Webbshopen
     internal class LoggIn
     {
         public static void Meny() { NavMenu.LoggaInMeny(); }
-       
+
         public static void loggaIn()
         {
-            
-            
-            
             using (var db = new SQL.MyDbContext())
             {
-                foreach (var Profiler in db.Profiler) 
+                Console.WriteLine("Email addres: ");
+                string emailAddress = Console.ReadLine();
+                bool foundProfile = false;
+
+                foreach (var Profiler in db.Profiler)
                 {
-                    Console.WriteLine("Email addres: ");
-                    string emailAddress = Console.ReadLine();
-                    if (emailAddress != Profiler.email)
+                    if (emailAddress == Profiler.email)
                     {
-                        Console.WriteLine("Email adressen finns ej regristrerat");
-                        Thread.Sleep(2000);
-                        Console.Clear();
-                        NavMenu.LoggaInMeny();
-                    }
-                    if(emailAddress == Profiler.email) 
-                    {
+                        foundProfile = true;
+
                         Console.WriteLine("Lössenord: ");
                         string lossenOrd = Console.ReadLine();
+
                         if (lossenOrd != Profiler.losenord)
                         {
-                            Console.WriteLine("fel Lössenord eller Email");
+                            Console.WriteLine("Fel lösenord eller email");
                             Console.ReadKey();
                             LoggIn.loggaIn();
                         }
-                        else 
-                        { 
-                            Profil.profil();
-                        }
-                        if (Profiler.Admin == true)
+                        else
                         {
-                            framSida.adminSida();
+                            
+                            if (Profiler.Admin == true)
+                            {
+                                framSida.adminSida();
+                            }
+                            else 
+                            {
+                                framSida.forstaSida();
+                            }
+                            return; 
                         }
                     }
                 }
+
+                if (!foundProfile)
+                {
+                    Console.WriteLine("Email adressen finns ej registrerat");
+                    Thread.Sleep(2000);
+                    Console.Clear();
+                    NavMenu.LoggaInMeny();
+                }
             }
-
-
         }
+
         public static void regristrera() 
         {
             

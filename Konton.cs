@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,16 @@ namespace Webbshopen
 {
     internal class Konton
     {
-        public static void konton()
-        { 
-            using (var db = new SQL.MyDbContext()) 
+        public static async Task KontonAsync()
+        {
+            using (var db = new SQL.MyDbContext())
             {
-                foreach(var Profiler in db.Profiler)
+                var profiler = await db.Profiler.ToListAsync(); 
+
+
+                foreach (var profil in profiler)
                 {
-                    Console.WriteLine(Profiler.Id + "\t" + Profiler.forNamn + "\t" + Profiler.efterNamn + "\t" + Profiler.email + "\t" + 
-                        Profiler.adress + "\t" + Profiler.Admin);
+                    Console.WriteLine($"{profil.Id}\t{profil.forNamn}\t{profil.efterNamn}\t{profil.email}\t{profil.adress}\t{profil.Admin}");
                 }
             }
         }

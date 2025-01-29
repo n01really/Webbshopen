@@ -16,7 +16,5 @@ namespace Webbshopen.SQL
         public string? email { get; set; }
         public string? losenord { get; set; }
         public bool Admin { get; set; }
-
-        public virtual ICollection<Profiler> Konton { get; set; } = new List<Profiler>();
     }
 }

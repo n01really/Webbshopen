@@ -20,7 +20,7 @@ namespace Webbshopen
         public Products GetProductById(int productId)
         {
             return _context.Products
-                .Include(p => p.Kategorier) // Eager load related data (Kategorier)
+                .Include(p => p.Kategorier) 
                 .FirstOrDefault(p => p.Id == productId);
         }
 
@@ -29,10 +29,10 @@ namespace Webbshopen
             var product = _context.Products.FirstOrDefault(p => p.Id == productId);
             if (product == null || product.Antal < quantity)
             {
-                return false; // Product not available or insufficient quantity
+                return false; 
             }
 
-            // Reduce quantity in product table
+           
             product.Antal -= quantity;
             _context.kundvagns.Add(new SQL.Kundvagn
             {
@@ -65,12 +65,19 @@ namespace Webbshopen
 
         public void CompleteOrder(string shippingMethod, string paymentMethod)
         {
-            // Example processing logic for order completion
+            
             Console.WriteLine($"Order completed with {shippingMethod} shipping and {paymentMethod} payment.");
 
-            // Clear the cart
+            
             _context.kundvagns.RemoveRange(_context.kundvagns);
             _context.SaveChanges();
+        }
+        public List<Products> GetTopThreeProductsByQuantity()
+        {
+            return _context.Products
+                .OrderByDescending(p => p.Antal ?? 0)
+                .Take(3)
+                .ToList(); // Synkron laddning
         }
     }
 
