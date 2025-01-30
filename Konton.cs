@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +11,11 @@ namespace Webbshopen
 {
     internal class Konton
     {
-        public static async Task KontonAsync()
+        public static void konton()
         {
             using (var db = new SQL.MyDbContext())
             {
-                var profiler = await db.Profiler.ToListAsync(); 
+                 var profiler =  db.Profiler.ToList(); 
 
 
                 foreach (var profil in profiler)

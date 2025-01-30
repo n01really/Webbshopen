@@ -8,11 +8,11 @@ namespace Webbshopen
 {
     internal class Inventarie
     {
-        public static void inventarie()
+        public static async Task inventarie()
         {
-            using (var db = new SQL.MyDbContext())
+           await using (var db = new SQL.MyDbContext())
             {
-                foreach (var Products in db.Products)
+                await foreach (var Products in db.Products)
                 {
                     Console.WriteLine(Products.Id + "\t" + Products.Name + "\t" + Products.ProductId + "\t" + Products.Pris + "\t" + Products.Antal + "\t" +
                       Products.Levrantör);

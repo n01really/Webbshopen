@@ -12,7 +12,7 @@ namespace Webbshopen
     {
         public static async void admin() 
         {
-            Console.WriteLine("[a] [b] [c] [d]");
+            Console.WriteLine("[a]Kategorier [b]Produkter [c]Profiler [d]Rabatter");
             while (true)
             {
                 using (var db = new SQL.MyDbContext())
@@ -95,7 +95,7 @@ namespace Webbshopen
                             {
                                 case "a":
                                     Console.Clear();
-                                    await Konton.KontonAsync();
+                                    Konton.konton();
                                     Console.WriteLine("ta bort konto via ID");
                                     int kId;
                                     int.TryParse(Console.ReadLine(), out kId);
@@ -103,7 +103,7 @@ namespace Webbshopen
                                     break;
                                 case "b":
                                     Console.Clear();
-                                    await Konton.KontonAsync();
+                                    Konton.konton();
                                     Console.WriteLine("Skriv in ditt Förnamn: ");
                                     string fN = Console.ReadLine();
                                     Console.WriteLine("Förnamn: " + fN);
@@ -125,7 +125,7 @@ namespace Webbshopen
                                     break;
                                 case "c":
                                     Console.Clear();
-                                    await Konton.KontonAsync();
+                                    Konton.konton();
                                     Console.WriteLine("Ändra profil: ");
                                     Console.WriteLine("Ange profilens ID:");
                                     int profilId;
