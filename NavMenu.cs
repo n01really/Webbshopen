@@ -10,9 +10,9 @@ namespace Webbshopen
 {
     public class NavMenu
     {
-        
-       public static void MainMenu()
-       {
+
+        public static void MainMenu()
+        {
             Console.WriteLine("meny");
             Console.WriteLine();
             Console.WriteLine("a. hem  b. Kategorier c. logga in d. Kundvagn e.Sök");
@@ -27,7 +27,7 @@ namespace Webbshopen
                 case "b":
                     Console.Clear();
                     Categorier.Kategotier();
-                    
+
                     break;
                 case "c":
                     Console.Clear();
@@ -54,7 +54,7 @@ namespace Webbshopen
             }
 
 
-       }
+        }
 
         public static void LoggaInMeny()
         {
@@ -89,7 +89,7 @@ namespace Webbshopen
             {
                 var service = new ItemService(context);
 
-                
+
 
                 while (true)
                 {
@@ -145,83 +145,123 @@ namespace Webbshopen
                     {
                         Console.WriteLine($"\nProduct Details:");
                         Console.WriteLine($"ID: {product.Id}");
-                        Console.WriteLine($"Name: {product.Name}");
-                        Console.WriteLine($"Category: {product.Kategorier?.Name}");
-                        Console.WriteLine($"Price: {product.Pris}");
-                        Console.WriteLine($"Quantity Available: {product.Antal}");
+                        Console.WriteLine($"Namn: {product.Name}");
+                        Console.WriteLine($"kategori: {product.Kategorier?.Name}");
+                        Console.WriteLine($"Pris: {product.Pris}");
+                        Console.WriteLine($"antal: {product.Antal}");
                         Console.WriteLine($"Description: {product.Description}");
-                        Console.WriteLine($"Supplier: {product.Levrantör}\n");
+                        Console.WriteLine($"levrantör: {product.Levrantör}\n");
 
-                        Console.Write("Do you want to add this product to the cart? (yes/no): ");
+                        Console.Write("vill du lägga till i varukorgen  (j/n): ");
                         string choice = Console.ReadLine()?.ToLower();
 
-                        if (choice == "yes")
+                        if (choice == "j")
                         {
-                            Console.Write("Enter the quantity to add: ");
+                            Console.Write("Hur många: ");
                             if (int.TryParse(Console.ReadLine(), out int quantity))
                             {
                                 if (productRepo.AddToCart(productId, quantity))
                                 {
-                                    Console.WriteLine("Product added to cart successfully.\n");
+                                    Console.WriteLine("Produkt tillagd.\n");
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Failed to add product to cart. Check availability.\n");
+                                    Console.WriteLine("kunde ej lägga till produgt kontakta kund tjänst via GoFukcYourSelf@RichardsSaker.se.\n");
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("Invalid quantity.\n");
+                                Console.WriteLine("ogiltigt antal.\n");
                             }
                         }
                         else
                         {
-                            Console.WriteLine("Returning to main menu.\n");
+                            Console.WriteLine("återvänder till start sida.\n");
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Product not found.\n");
+                        Console.WriteLine("Produkt ej hittad.\n");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid Product ID.\n");
+                    Console.WriteLine("ogiltig produkt.\n");
                 }
             }
 
         }
+
         private static void ShowCart()
         {
-            using var context = new SQL.MyDbContext(); // Skapar en instans av databaskontexten
-            var productRepo = new ProductSida(context); // Repository för produkter
-            var cartService = new Kundvagn(context, productRepo); // Skapar en instans av CartService
+            using var context = new SQL.MyDbContext();
+            var productRepo = new ProductSida(context);
+            var cartService = new Kundvagn(context, productRepo);
 
-            cartService.ShowCart(); // Använder CartService för att visa innehållet i kundvagnen
+            cartService.ShowCart();
 
-            Console.WriteLine("Would you like to remove a product from the cart? (yes/no): ");
+            Console.WriteLine("Vill du ta bort något från varukorgen? (ja/nej): ");
             string choice = Console.ReadLine()?.ToLower();
 
-            if (choice == "yes")
+            if (choice == "ja")
             {
-                Console.Write("Enter the Product ID to remove: ");
+                Console.Write("Vilken produkt vill du ta bort: ");
                 if (int.TryParse(Console.ReadLine(), out int productId))
                 {
                     cartService.RemoveFromCart(productId);
-                    ShowCart();
+                    ShowCart(); 
                 }
                 else
                 {
-                    Console.WriteLine("Invalid Product ID.\n");
+                    Console.WriteLine("Ogiltig produkt.\n");
                 }
             }
 
-            cartService.Checkout(); // Går vidare till Checkout via CartService
+            cartService.Checkout();
+
+            
+            var cartSummary = productRepo.SaveCartSummary();
+
+            Console.WriteLine($"Sammanfattning av kundvagnen sparad: {cartSummary.TotalQuantity} produkter, totalpris: {cartSummary.TotalPrice} kr.");
+
             Console.ReadKey();
             Console.Clear();
-            framSida.forstaSida(); // Gå tillbaka till huvudmenyn
+            framSida.forstaSida();
         }
 
+        //    private static void ShowCart()
+        //    {
+        //        using var context = new SQL.MyDbContext(); 
+        //        var productRepo = new ProductSida(context);
+        //        var cartService = new Kundvagn(context, productRepo); 
+
+        //        cartService.ShowCart(); 
+
+        //        Console.WriteLine("vill du ta bort något från varu korgen (ja/nej): ");
+        //        string choice = Console.ReadLine()?.ToLower();
+
+        //        if (choice == "ja")
+        //        {
+        //            Console.Write("vilken produkt vill du ta bort: ");
+        //            if (int.TryParse(Console.ReadLine(), out int productId))
+        //            {
+        //                cartService.RemoveFromCart(productId);
+        //                ShowCart();
+        //            }
+        //            else
+        //            {
+        //                Console.WriteLine("ogiltig produkt.\n");
+        //            }
+        //        }
+
+        //        cartService.Checkout();
+        //        ProductSida.SaveCartSummary();
+        //        Console.ReadKey();
+        //        Console.Clear();
+        //        framSida.forstaSida(); 
+        //    }
+
+        //}
     }
 }
 

@@ -45,7 +45,7 @@ namespace Webbshopen
             _context.SaveChanges();
             return true;
         }
-        public CartSummary SaveCartSummary()
+        public  CartSummary SaveCartSummary()
         {
             var items = _context.kundvagns.ToList();
             var totalQuantity = items.Sum(i => i.Quantity);
@@ -66,7 +66,7 @@ namespace Webbshopen
         public void CompleteOrder(string shippingMethod, string paymentMethod)
         {
             
-            Console.WriteLine($"Order completed with {shippingMethod} shipping and {paymentMethod} payment.");
+            Console.WriteLine($"order skickas med {shippingMethod} och betald med kortet {paymentMethod}.");
 
             
             _context.kundvagns.RemoveRange(_context.kundvagns);
@@ -77,7 +77,7 @@ namespace Webbshopen
             return _context.Products
                 .OrderByDescending(p => p.Antal ?? 0)
                 .Take(3)
-                .ToList(); // Synkron laddning
+                .ToList(); 
         }
     }
 

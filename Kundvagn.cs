@@ -24,76 +24,76 @@ namespace Webbshopen
 
             if (cartItem != null)
             {
-                // Återställ produktens antal i Products-tabellen
+                
                 var product = _context.Products.FirstOrDefault(p => p.Id == productId);
                 if (product != null)
                 {
                     product.Antal += cartItem.Quantity;
                 }
 
-                // Ta bort produkten från Cart-tabellen
+                
                 _context.kundvagns.Remove(cartItem);
                 _context.SaveChanges();
 
-                Console.WriteLine($"Product '{cartItem.ProductName}' removed from the cart.\n");
+                Console.WriteLine($"Product '{cartItem.ProductName}' bort tagaet fån korg\n");
             }
             else
             {
-                Console.WriteLine("Product not found in the cart.\n");
+                Console.WriteLine("Produkt inte hittad.\n");
             }
         }
 
 
-        // Visar innehållet i varukorgen och summerar det totala priset
+        
         public void ShowCart()
         {
             var cartItems = _context.kundvagns.ToList();
 
             if (!cartItems.Any())
             {
-                Console.WriteLine("\nYour cart is empty.\n");
+                Console.WriteLine("\nKundvagn tom.\n");
                 return;
             }
 
-            Console.WriteLine("\nItems in your cart:");
+            Console.WriteLine("\nFöremål i Kundvagn:");
 
             int totalPrice = 0;
             int totalQuantity = 0;
 
             foreach (var item in cartItems)
             {
-                Console.WriteLine($"Product: {item.ProductName}, Quantity: {item.Quantity}, Price (total): {item.Price}");
+                Console.WriteLine($"Produkt: {item.ProductName}, Antal: {item.Quantity}, Pris (total): {item.Price}");
                 totalPrice += item.Price;
                 totalQuantity += item.Quantity;
             }
 
-            Console.WriteLine($"\nTotal products: {totalQuantity}");
-            Console.WriteLine($"Total price: {totalPrice}\n");
+            Console.WriteLine($"\nTotal produkter: {totalQuantity}");
+            Console.WriteLine($"Total pris: {totalPrice}\n");
         }
 
-        // Metod för att gå vidare till betalning
+        
         public void Checkout()
         {
-            // Visa varukorg först
+            
             ShowCart();
 
-            // Kolla om varukorgen är tom
+           
             var cartItems = _context.kundvagns.ToList();
             if (!cartItems.Any())
             {
-                Console.WriteLine("Cannot proceed to checkout with an empty cart.\n");
+                Console.WriteLine("kan ej fortsätta utan varor.\n");
                 return;
             }
 
-            Console.Write("Enter shipping method: ");
+            Console.Write("vilken frakt Postnord, DHL, (Instabox gratis frakt över 50kr): ");
             string shipping = Console.ReadLine();
 
-            Console.Write("Enter payment method: ");
+            Console.Write("kortnr: ");
             string payment = Console.ReadLine();
 
-            // Slutför beställningen
+            
             _productRepo.CompleteOrder(shipping, payment);
-            Console.WriteLine("\nOrder completed and cart cleared.");
+            Console.WriteLine("\nOrder kompllet.");
         }
         
     }
