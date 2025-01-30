@@ -27,16 +27,16 @@ namespace Webbshopen
                             switch (KatAdmin) 
                             {
                                 case "a":
-                                    Categorier.Kategotier();
+                                    Categorier.KategotierAdmin();
                                     Console.WriteLine("Lägg till kategori");
                                     string kategoriNamn = Console.ReadLine();
                                     db.Kategorier.Add(new SQL.Kategorier { Name = kategoriNamn });
                                     db.SaveChanges();
                                     Console.Clear();
-                                    Admin.admin();
+                                    framSida.adminSida();
                                     break;
                                 case "b":
-                                    Categorier.Kategotier();
+                                    Categorier.KategotierAdmin();
                                     Console.WriteLine("ta bort kategori");
                                     int kategoriId;
                                     int.TryParse(Console.ReadLine(), out kategoriId);
@@ -44,7 +44,7 @@ namespace Webbshopen
                                     db.SaveChanges();
                                     Console.Clear();
                                     Categorier.Kategotier();
-                                    Admin.admin();
+                                    framSida.adminSida();
                                     break;
                             }
                         break;
@@ -56,7 +56,7 @@ namespace Webbshopen
                             {
                                 case "a":
                                     Console.Clear();
-                                    Categorier.Kategotier();
+                                    Categorier.KategotierAdmin();
                                     Inventarie.inventarie();
                                     Console.WriteLine("ange kategori Id");
                                     int kategorierId = int.Parse(Console.ReadLine());
@@ -172,7 +172,7 @@ namespace Webbshopen
                                     db.SaveChanges();
                                     Console.Clear();
                                     Console.WriteLine("Profilen har uppdaterats.");
-                                    Admin.admin();
+                                    framSida.adminSida();
                                     break;
 
                             }

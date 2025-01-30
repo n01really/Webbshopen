@@ -18,7 +18,23 @@ namespace Webbshopen
                     Console.WriteLine(Kategorier.Id + "\t" + Kategorier.Name );
                     Console.WriteLine("------------------------");
                 }
+
                 NavMenu.catmeny();
+            }
+        }
+
+        public static void KategotierAdmin()
+        {
+
+            using (var db = new SQL.MyDbContext())
+            {
+                foreach (var Kategorier in db.Kategorier)
+                {
+                    Console.WriteLine(Kategorier.Id + "\t" + Kategorier.Name);
+                    Console.WriteLine("------------------------");
+                }
+
+                
             }
         }
     }

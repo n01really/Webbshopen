@@ -45,7 +45,7 @@ namespace Webbshopen
             _context.SaveChanges();
             return true;
         }
-        private CartSummary SaveCartSummary()
+        public CartSummary SaveCartSummary()
         {
             var items = _context.kundvagns.ToList();
             var totalQuantity = items.Sum(i => i.Quantity);
