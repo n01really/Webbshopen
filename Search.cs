@@ -57,6 +57,7 @@ namespace Webbshopen
                 foreach (var product in results)
                 {
                     Console.WriteLine($"Id: {product.Id}, Name: {product.Name}, Price: {product.Pris:C}, Description: {product.Description}");
+                    framSida.forstaSida():
                 }
             }
         }
