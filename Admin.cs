@@ -182,6 +182,7 @@ namespace Webbshopen
                             }
                         break;
                         case "d":
+                            Console.WriteLine("[a]rabbat enskild [b]rabbat Kategori [c]rabbat hela sidan");
                             string reaAdmin = Console.ReadLine();
 
                             switch (reaAdmin)
