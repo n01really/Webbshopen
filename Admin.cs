@@ -75,6 +75,7 @@ namespace Webbshopen
                                     var newProd = new SQL.Products(Name, kategorierId, Pris, antal, Description, levrantör, productId);
                                     db.Add(newProd);
                                     db.SaveChanges();
+                                    framSida.adminSida();
                                     break;
                                 case "b":
                                     Console.Clear();
@@ -84,6 +85,7 @@ namespace Webbshopen
                                     var remProd = new SQL.Products(id);
                                     db.Remove(remProd);
                                     db.SaveChanges();
+                                    framSida.adminSida();
                                     break;
                             }
                         break;
@@ -100,6 +102,8 @@ namespace Webbshopen
                                     int kId;
                                     int.TryParse(Console.ReadLine(), out kId);
                                     db.Profiler.Remove(new SQL.Profiler { Id = kId });
+                                    db.SaveChanges();
+                                    framSida.adminSida();
                                     break;
                                 case "b":
                                     Console.Clear();
@@ -268,6 +272,7 @@ namespace Webbshopen
                                     db.SaveChanges();
 
                                     Console.WriteLine($"Alla produkter i butiken har fått {rabatt}% rabatt.");
+                                    framSida.adminSida();
                                     break;
 
                                 default:
