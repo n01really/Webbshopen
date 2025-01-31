@@ -10,7 +10,7 @@ namespace Webbshopen
 {
     internal class Admin
     {
-        public static async void admin() 
+        public static void admin() 
         {
             Console.WriteLine("[a]Kategorier [b]Produkter [c]Profiler [d]Rabatter");
             while (true)
